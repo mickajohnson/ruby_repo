@@ -1,0 +1,26 @@
+<h1>Ninja Gold</h1>
+<h4>Your Gold <a href="/reset">(reset)</a></h4>
+<div id="gold">
+  <p class="center"><%= session[:gold] %></p>
+</div>
+
+<% @locations.each do |location| %>
+  <div class="location">
+    <h3><%= location[:location].capitalize %></h3>
+    <h6> <%= location[:amount] %></h6>
+    <form class="center" action="/<%= location[:location] %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input class="center" type="submit" value="Find Gold!">
+    </form>
+
+  </div>
+<%end%>
+
+<h4>Activities</h4>
+<div id="activities">
+  <%if session[:log]%>
+    <%session[:log].each do |message|%>
+      <p <%if message[1] == "n"%>id="bad"<%end%> class="message"><%=message%></p>
+    <%end%>
+  <%end%>
+</div>

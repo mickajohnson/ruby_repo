@@ -1,0 +1,9 @@
+rails g model Comment content:text commentable:references{polymorphic}
+to Comment:
+  belongs_to :commentable, :polymorphic => true
+to Blog, User, Post, and Message:
+  has_many :comments, as: :commentable
+An example creation:
+  Post.find(1).comments.create(content:"Great Post!")
+or:
+  Comment.create(content: "This is a comment on the third post", commentable: Post.third)

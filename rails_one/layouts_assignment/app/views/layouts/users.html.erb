@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Users</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <%= yield :users %>
+    </div>
+    <div class="col-xs-6">
+      <%= yield :new_user %>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

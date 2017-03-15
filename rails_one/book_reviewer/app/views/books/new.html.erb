@@ -1,0 +1,28 @@
+<a href="/books">Home</a>
+<a href="/logout">Logout</a>
+<h1>Add a New Book and Review</h1>
+<form action="/books" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input class="form-control" type="text" name="title">
+  </div>
+  <div class="form-group">
+    <label for="author">Author</label>
+    <select name="author">
+      <% @authors.each do |author|%>
+      <option value="<%=author.id%>"><%=author.name%></option>
+      <%end%>
+    </select>
+  </div>
+  <div class="">
+
+  </div>
+</form>
+<h3>Add a new Author</h3>
+<form action="/authors" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label for="author">Author</label>
+  <input type="text" name="name">
+  <input type="submit" class='btn btn-info' value="Submit">
+</form>

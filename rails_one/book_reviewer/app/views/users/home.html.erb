@@ -1,0 +1,12 @@
+<h1 class="text-center">Login/Register</h1>
+<%if flash[:error]%>
+  <p><%=flash[:error]%></p>
+<%end%>
+<form action="/" method="post">
+  <div class="form-group">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <label for="username">Username</label>
+    <input class="form-control" type="text" name="username">
+  </div>
+  <input class="btn btn-primary" type="submit" value="Submit">
+</form>

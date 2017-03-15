@@ -1,0 +1,27 @@
+<%= content_for :title, "New Task"%>
+<h1 class="text-center">New Task</h1>
+<%if flash[:errors]%>
+  <%flash[:errors].each do |error|%>
+    <p><%=error%></p>
+  <%end%>
+<%end%>
+<form action="/" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input class="form-control" type="text" name="task[description]">
+  </div>
+  <div class="form-group">
+    <label for="description">Due Date</label>
+    <input class="form-control" type="date" name="task[due_date]">
+  </div>
+  <div class="form-group">
+    <label for="priority">Priority</label>
+    <select class="form-control" name="task[priority]">
+      <option value="Low" selected="selected">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
+  </div>
+  <input class="btn btn-success" type="submit" value="Create">
+</form>

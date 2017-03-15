@@ -1,0 +1,23 @@
+<h1>Survey Time!</h1>
+<form action="/result" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+  <label for="name">
+    Name<input type="text" name="result[name]">
+  </label>
+  <label for="">Location</label>
+  <select name="result[location]">
+  <% @locations.each do |location| %>
+    <option value="<%=location%>"><%=location%></option>
+  <%end%>
+  </select>
+  <label for="">Language</label>
+  <select name="result[language]">
+  <% @languages.each do |language| %>
+    <option value="<%=language%>"><%=language%></option>
+  <%end%>
+  </select>
+  <label for="result[comment]">
+    Comment<textarea name="result[comment]" rows="8" cols="80"></textarea>
+  </label>
+  <input type="submit" value="Submit">
+</form>

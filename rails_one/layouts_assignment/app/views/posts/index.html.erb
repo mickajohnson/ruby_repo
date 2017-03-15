@@ -1,0 +1,48 @@
+<%content_for :posts do%>
+  <h1>All Posts</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@posts.each do |post|%>
+      <tr>
+        <td><%=post.title%></td>
+        <td><%=post.content%></td>
+        <td><%=post.user.first_name%> <%=post.user.last_name%></td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+<%end%>
+<%content_for :new_post do%>
+  <h1>New Post</h1>
+  <form action="/posts" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input class="form-control" type="text" name="title">
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea class="form-control" type="text" name="content"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="user">Author</label>
+      <select class="form-control" name="user">
+        <%@users.each do |user|%>
+          <option value="<%=user.id%>"><%=user.first_name%> <%=user.last_name%></option>
+        <%end%>
+      </select>
+    </div>
+    <input class="btn btn-primary" type="submit" name="" value="Submit">
+  </form>
+<%end%>
+<%content_for :back_to_users do%>
+  <h1>Go to Users Page</h1>
+  <a href="/" class="btn btn-info">All Users</a>
+<%end%>

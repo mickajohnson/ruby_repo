@@ -1,0 +1,29 @@
+<h1>New Student</h1>
+<%if flash[:errors]%>
+  <%flash[:errors].each do |error|%>
+  <p><%=error%></p>
+  <%end%>
+<%end%>
+<form action="/dojos/<%=@dojo.id%>/students/" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="first_name">
+    First Name: <input type="text" name="student[first_name]">
+  </label>
+  <label for="last_name">
+    Last Name: <input type="text" name="student[last_name]">
+  </label>
+  <label for="email">
+    Email: <input type="text" name="student[email]">
+  </label>
+  <select name="dojo">
+    <%@dojos.each do |dojo|%>
+      <option value="<%=dojo.id%>"
+        <%if dojo == @dojo%>
+          selected="selected"
+        <%end%>>
+        <%=dojo.branch%></option>
+    <%end%>
+  </select>
+  <input type="submit" class="btn btn-primary" value="Create">
+</form>
+<p><a href="/dojos">Home</a> | <a href="/dojos/<%=@dojo.id%>/"><%=@dojo.branch%></a></p>

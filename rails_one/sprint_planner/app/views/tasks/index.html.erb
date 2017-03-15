@@ -1,0 +1,90 @@
+<%= content_for :new, "Sprint Planner"%>
+<h1 class="text-center">Sprint Planner</h1>
+<div class="task-area">
+  <h3 class="text-center">To Do</h3>
+  <hr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @to_do.each do |task|%>
+      <tr>
+        <td><div class="<%=task.priority%>"></div> <%=task.description%></td>
+        <td><%=task.due_date.strftime("%B %d %Y")%></td>
+        <td><form action="/" method="post">
+              <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+              <input type="hidden" name="_method" value="PATCH">
+              <input type="hidden" name="new_status" value="doing">
+              <input type="hidden" name="task" value="<%=task.id%>">
+              <input class="btn btn-primary" type="submit" value="Doing">
+            </form>
+        </td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
+<div class="task-area">
+  <h3 class="text-center">Doing</h3>
+  <hr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @doing.each do |task|%>
+      <tr>
+        <td><div class="<%=task.priority%>"></div> <%=task.description%></td>
+        <td><%=task.due_date.strftime("%B %d %Y")%></td>
+        <td><form action="/" method="post">
+              <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+              <input type="hidden" name="_method" value="PATCH">
+              <input type="hidden" name="new_status" value="done">
+              <input type="hidden" name="task" value="<%=task.id%>">
+              <input class="btn btn-success" type="submit" value="Done">
+            </form>
+        </td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
+<div class="task-area">
+  <h3 class="text-center">Done</h3>
+  <hr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @done.each do |task|%>
+      <tr>
+        <td><div class="<%=task.priority%>"></div> <%=task.description%></td>
+        <td><%=task.due_date.strftime("%B %d %Y")%></td>
+        <td><form action="/" method="post">
+              <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+              <input type="hidden" name="_method" value="PATCH">
+              <input type="hidden" name="new_status" value="hidden">
+              <input type="hidden" name="task" value="<%=task.id%>">
+              <input class="btn btn-warning" type="submit" value="Hide">
+            </form>
+        </td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
+<a href="/new" class="btn btn-info">Create New</a>

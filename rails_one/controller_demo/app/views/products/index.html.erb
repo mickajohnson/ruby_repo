@@ -1,0 +1,11 @@
+<h1>Products</h1>
+<% @products.each do |product| %>
+<h4><%= product.name %></h4>
+<p> <%= product.description %> </h4>
+  <% end %>
+<form action="/products" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="text" name="name">
+    <textarea name='description'></textarea>
+    <input type='submit' value='Create'>
+</form>

@@ -1,0 +1,38 @@
+body{
+  background: rgb(156, 205, 154)
+}
+
+h1, h2, h3, h4, h5, h6,.center {
+  text-align: center;
+}
+
+#gold {
+  border: 2px solid black
+}
+
+#activities {
+  overflow: scroll;
+  height: 8em;
+  border: 2px solid black;
+}
+
+.location {
+  width: 15%;
+  border: 2px solid black;
+  margin: 1%;
+  padding: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+div {
+  background: white;
+}
+
+.message {
+  color: green;
+}
+
+#bad {
+  color: red;
+}

@@ -1,0 +1,17 @@
+var app = angular.module("myApp", ["ngRoute", "ngResource"]);
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+  $locationProvider.html5Mode(true);
+  $routeProvider
+  .when('/', {
+    templateUrl: "<%= asset_path('tasks/tasks.html')%>",
+    controller: "taskController"
+  })
+  .when('/new', {
+    templateUrl: "<%= asset_path('tasks/new.html')%>",
+    controller: "createController"
+  })
+  .otherwise({
+    redirectTo: '/'
+  })
+}
+]);
